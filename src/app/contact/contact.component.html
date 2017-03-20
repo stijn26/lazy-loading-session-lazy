@@ -1,0 +1,53 @@
+<div class="contact-page main-body">
+  <div class="container">
+    <div class="row main-row">
+      <div class="title col s12">
+        Contact us
+      </div>
+
+      <div class="contact-form col s12">
+        <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+          <div class="input-div">
+            <div *ngIf="name.errors && (name.dirty || name.touched)" class="error-sign red">
+              <div [hidden]="!name.errors.required">
+                Name is required
+              </div>
+            </div>
+            <label>Name:</label>
+            <input required type="text" formControlName="name">
+          </div>
+          <div class="input-div">
+            <div *ngIf="email.errors && (email.dirty || email.touched)" class="error-sign red">
+              <div [hidden]="!email.errors.required">
+                Email is required
+              </div>
+            </div>
+            <label>Email:</label>
+            <input required type="text" formControlName="email">
+          </div>
+          <div class="input-field input-div">
+            <div *ngIf="message.errors && (message.dirty || message.touched)" class="error-sign red">
+              <div [hidden]="!message.errors.required">
+                A message is required
+              </div>
+            </div>
+            <label>Message:</label>
+            <textarea required formControlName="message" class="materialize-textarea"></textarea>
+          </div>
+          <div>
+            <button class="waves-effect waves-light btn" type="submit" [disabled]="!contactForm.valid">Submit</button>
+          </div>
+          <div class="info-status">
+            {{infoStatus}}
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="arrow-wrapper">
+      <div class="arrow-box">
+        <a routerLink="/dashboard"><i class="fa fa-tachometer fa-2x" aria-hidden="true"></i></a>
+      </div>
+    </div>
+  </div>
+</div>
